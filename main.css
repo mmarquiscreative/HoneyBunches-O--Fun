@@ -1,0 +1,27 @@
+#lady {
+    margin-top: 15px;
+    background: url("GUI.png") -16px -50px no-repeat;
+    height: 220px;
+}
+
+#garrett {
+        margin-top: 15px;
+
+    background: url("GUI.png") -675px -50px no-repeat;
+    height: 220px;
+    display:none;
+}
+
+#horsebox {
+     background: url("horse_1.png") 31px center no-repeat;
+}
+
+#furybar {
+    height: 100px;
+    background: url('GUI.png') center -305px no-repeat;
+    padding: 25px 160px;
+}
+
+.bar-fill {
+    
+}
