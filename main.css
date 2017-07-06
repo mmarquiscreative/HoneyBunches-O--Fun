@@ -1,27 +1,119 @@
-#lady {
+#laverne {
     margin-top: 15px;
+    margin-right: -15px;
     background: url("GUI.png") -16px -50px no-repeat;
     height: 220px;
 }
 
 #garrett {
         margin-top: 15px;
-
+    margin-right: -15px;
+margin-left: -15px;
     background: url("GUI.png") -675px -50px no-repeat;
     height: 220px;
-    display:none;
 }
 
 #horsebox {
-     background: url("horse_1.png") 31px center no-repeat;
+     /*background: url("horse_1.png") center center no-repeat;*/
+    margin-bottom: 23px;
 }
-
+.row {
+    text-align: center
+}
 #furybar {
-    height: 100px;
-    background: url('GUI.png') center -305px no-repeat;
-    padding: 25px 160px;
+    background: url('GUI_fillbar.png') left center no-repeat;
+    text-align:center;
+    margin: 13px 0px 0px 0px;
+    margin-left: 0px;
+    height: 50px;
+    width: 0px;
+    display: inline-block;
+    position: absolute;
 }
 
-.bar-fill {
-    
+#fillframe{
+    display: inline-block;
+    opacity:.99;
+
+}
+
+#dialogue {
+    margin-top: 15px;
+    background: url("GUI.png") center -416px no-repeat;
+    height: 130px;
+    text-align: center;
+}
+
+h3 {
+    font-family: 'VT323', monospace;
+    font-size: 30px;
+    color: #fff;
+    padding-top: 28px;
+        letter-spacing: .05em;
+}
+
+h4{
+   font-family: 'VT323', monospace;
+    font-size: 25px; 
+}
+
+p {
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    color: #fff;
+    letter-spacing: .05em;
+}
+
+.buttons{
+    text-align: center;
+}
+
+.answer, .endBtn{
+    padding: 0px 15px;
+    height: 40px;
+    margin: 15px;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    color: #fff;
+   background-color: #808080;
+    border-style: outset;
+}
+
+.answer:active .endBtn:active {
+    background-color: #C0C0C0;
+}
+
+.hidden {
+    display: none;
+}
+
+.fade {
+    opacity: .5;
+}
+
+.invert {
+    filter: invert(100%);
+}
+
+#mushroom{
+    background: URL('9MOyQ.gif') center center repeat;
+    background-size: cover;
+    height: 800px;
+            text-align: center;
+
+}
+.endGame{
+    height: 1000px;
+        text-align: center;
+
+}
+#gameover {
+    font-family: 'VT323', monospace;
+    font-size: 120px;
+    padding-top:200px;
+    margin-bottom:140px; 
+    height: 40px;
+    color: #000;
+    text-align: center;
+
 }

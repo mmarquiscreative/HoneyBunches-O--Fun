@@ -16,29 +16,48 @@
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/TableDnD/0.9.1/jquery.tablednd.js"></script>
-       
-        <title>Q</title>
+       <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+        <title>Honeybunches of Trouble</title>
     </head>
     <body>
-        
+        <div class="game">
         <div class="container-fluid">
             <div class="row">
-                <div id="lady" class="col-sm-3"></div>
+               <div id="laverneBlock" class="col-sm-3 blinking"><div id="laverne" ></div>
+               <h4>Laverne</h4></div>
+                
+                
                 <div id="horsebox" class="col-sm-6">
                   <img 
                 src="GUI_frame.png">  
                 </div>
-                <div id="garrett" class="col-sm-3"></div>
+                <div id="garrettBlock" class="col-sm-3 fade"><div id="garrett" ></div>
+               <h4>Garrett</h4></div>
             </div>
         </div>
         <div class="container-fluid">
+           <div class="row"><h4>Fury Meter</h4></div>
             <div class="row">
-                <div id="furybar"><img class="bar-fill" src="GUI_fillbar.png"></div>
+                <div id="furybar">
+                </div>
+                <img id="fillframe"src="GUI_Fillframe.png">
             </div>
             <div class="row">
-                <div id="dialogue"></div>
+                <div id="dialogue"><h3 class="speaker">Laverne</h3>
+                <p class="dialogue">Varmint' got itself intah mah curn! Is this yer varmint?</p></div>
             </div>
+            <div class="row buttons">
+            <button id="yes" class="answer">Yes</button><button id="no" class="answer">That's not my horse.</button><button id="refresh" class="answer hidden">Is that all Laverne?</button>
+            <button id="endButton" class="hidden endBtn">Fine Laverne. Whatever.</button></div>
         </div>
-       
+        </div>
+        <div class="endGame hidden">
+            <div class="container-fluid"><div class="row">
+                
+                <div id="mushroom"><h1 id="gameover">GAME OVER</h1><button id="playAgain" class="endBtn">Was it your horse though?</button></div></div>
+                           
+                            </div>
+        </div>
+       <script src="app.js"></script>
     </body>
 </html>
