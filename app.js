@@ -20,7 +20,9 @@ var UIController = (function(){
         game: '.game',
         endgame: '.endGame',
         playAgain: '#playAgain',
-        endBtn: '.endBtn'
+        endBtn: '.endBtn',
+        gameBtns: '#gameBtns',
+        endGameBtn: '#endGameBtn'
     };
     
     var DOMgarrettDialogue = {
@@ -81,6 +83,16 @@ var UIController = (function(){
 
     }
     
+    var addClass = function(target, className){
+        document.querySelector(target).classList.add(className);
+
+    }
+    
+     var removeClass = function(target, className){
+        document.querySelector(target).classList.remove(className);
+
+    }
+    
     var toggleBtns = function(){
         toggleClass(UIController.DOMstrings.no, UIController.DOMstrings.hidden__noPeriod);
         toggleClass(UIController.DOMstrings.yes, UIController.DOMstrings.hidden__noPeriod);
@@ -120,7 +132,9 @@ var UIController = (function(){
         horseNum: horseNum,
         toggleClass: toggleClass,
         visibleButtons: visibleButtons,
-        resetCurWidth: resetCurWidth
+        resetCurWidth: resetCurWidth,
+        addClass: addClass,
+        removeClass: removeClass
     }
 })();
 
@@ -165,13 +179,16 @@ var appCtrl = (function(gameCtrl, UICtrl){
     var endGame = function(){
         // 1. Update dialogue
         UICtrl.updateText(UICtrl.DOMstrings.dialogue, UICtrl.DOMdialogue.endDialogue);
+        
         // 2. Invert laverne
         UICtrl.toggleClass(UICtrl.DOMstrings.game, UICtrl.DOMstrings.invert__noPeriod);
-        // 3. hide all buttons
         
-        UICtrl.visibleButtons(UICtrl.DOMstrings.answer, 'remove');
+        // 3. hide all buttons
+        UICtrl.addClass(UICtrl.DOMstrings.gameBtns, UICtrl.DOMstrings.hidden__noPeriod);
+        
         // 4. add new button
-        UICtrl.toggleClass(UICtrl.DOMstrings.endButton, UICtrl.DOMstrings.hidden__noPeriod);
+        UICtrl.removeClass(UICtrl.DOMstrings.endGameBtn, UICtrl.DOMstrings.hidden__noPeriod);
+        
         // 5. toggle speaker
         UICtrl.updateText(UICtrl.DOMstrings.speaker, UICtrl.DOMdialogue.laverne);
        
@@ -179,28 +196,58 @@ var appCtrl = (function(gameCtrl, UICtrl){
 
     var mushroom = function(){
         // 1. hide all html
-        UICtrl.toggleClass(UICtrl.DOMstrings.game, UICtrl.DOMstrings.hidden__noPeriod);
-         UICtrl.toggleClass(UICtrl.DOMstrings.endgame, UICtrl.DOMstrings.hidden__noPeriod);
+        UICtrl.addClass(UICtrl.DOMstrings.game, UICtrl.DOMstrings.hidden__noPeriod);
+
+        // 2. make endgame div visible
+
+         UICtrl.removeClass(UICtrl.DOMstrings.endgame, UICtrl.DOMstrings.hidden__noPeriod);
+        
+        // 3. make playagain button visible
+
         UICtrl.visibleButtons(UICtrl.DOMstrings.playAgain, 'remove');
+        
+
         
     }
     
     return{
         init: function(){
+            // 1. Reset health bar
             UICtrl.resetCurWidth();
-           UICtrl.visibleButtons(UICtrl.DOMstrings.answer, 'remove');
-            UICtrl.visibleButtons(UICtrl.DOMstrings.endBtn, 'add');
-            UICtrl.visibleButtons(UICtrl.DOMstrings.refresh, 'add');
+            
+            // 2. Make game buttons visible
+           UICtrl.removeClass(UICtrl.DOMstrings.gameBtns, UICtrl.DOMstrings.hidden__noPeriod);
+            
+            // 2.1 Make game buttons visible via id
+            UICtrl.removeClass(UICtrl.DOMstrings.yes, UICtrl.DOMstrings.hidden__noPeriod);
+            
+                        UICtrl.removeClass(UICtrl.DOMstrings.no, UICtrl.DOMstrings.hidden__noPeriod);
+            
+                        UICtrl.addClass(UICtrl.DOMstrings.refresh, UICtrl.DOMstrings.hidden__noPeriod);
+            
+            // 3. Hide endGame btns
+            UICtrl.addClass(UICtrl.DOMstrings.endGameBtn, UICtrl.DOMstrings.hidden__noPeriod);
+            
+            // 4. Hide refresh button
+            UICtrl.addClass(UICtrl.DOMstrings.refresh, UICtrl.DOMstrings.hidden__noPeriod);
+            
+            // 5. Change back to Laverne name
             UICtrl.updateText(UICtrl.DOMstrings.speaker, UICtrl.DOMdialogue.laverne);
-          document.querySelector(UICtrl.DOMstrings.game).classList.remove(UICtrl.DOMstrings.invert__noPeriod);
+         
+           // 6. remove invert on game class 
+            document.querySelector(UICtrl.DOMstrings.game).classList.remove(UICtrl.DOMstrings.invert__noPeriod);
+
+            // 7. make game visible 
+
             document.querySelector(UICtrl.DOMstrings.game).classList.remove(UICtrl.DOMstrings.hidden__noPeriod);
-document.querySelector(UICtrl.DOMstrings.laverne).classList.remove(UICtrl.DOMstrings.invert__noPeriod);
-document.querySelector(UICtrl.DOMstrings.endgame).classList.add(UICtrl.DOMstrings.hidden__noPeriod);
+            
+            // 8. hide endgame div 
+            document.querySelector(UICtrl.DOMstrings.endgame).classList.add(UICtrl.DOMstrings.hidden__noPeriod);
 
            UICtrl.randomHorse(); UICtrl.updateText(UICtrl.DOMstrings.dialogue, UICtrl.DOMdialogue.init);
            
-  document.querySelector(UICtrl.DOMstrings.yes).addEventListener('click', endGame);
-document.querySelector(UICtrl.DOMstrings.no).addEventListener('click', noClick);
+        document.querySelector(UICtrl.DOMstrings.yes).addEventListener('click', endGame);
+            document.querySelector(UICtrl.DOMstrings.no).addEventListener('click', noClick);
             document.querySelector(UICtrl.DOMstrings.refresh).addEventListener('click', refreshClick)
             document.querySelector(UICtrl.DOMstrings.endButton).addEventListener('click', mushroom);
             document.querySelector(UICtrl.DOMstrings.playAgain).addEventListener('click', appCtrl.init);
