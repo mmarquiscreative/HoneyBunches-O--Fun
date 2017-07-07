@@ -174,7 +174,7 @@ var appCtrl = (function(gameCtrl, UICtrl){
         UICtrl.toggleClass(UICtrl.DOMstrings.endButton, UICtrl.DOMstrings.hidden__noPeriod);
         // 5. toggle speaker
         UICtrl.updateText(UICtrl.DOMstrings.speaker, UICtrl.DOMdialogue.laverne);
-        UICtrl.visibleButtons(UICtrl.DOMstrings.answer, 'add');
+       
                 UICtrl.toggleSpeaker();}
 
     var mushroom = function(){
